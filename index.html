@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delete Account</title>
+  <title>Delete Account - Notivibe</title>
   <style>
         * {
             margin: 0;
@@ -65,29 +65,37 @@
             background-color: darkred;
         }
         .message {
-            color: green;
+            font-weight: bold;
             margin-top: 15px;
             display: none;
-            font-weight: bold;
+            color: green;
         }
-    </style>
+  </style>
   <script>
-        function showMessage(event) {
+        function fakeDeleteRequest(event) {
             event.preventDefault();
-            document.getElementById("successMessage").style.display = "block";
+
+            const message = document.getElementById("message");
+
+            // Simulate a fake request with a delay
+            setTimeout(() => {
+                message.textContent = "Your account has been deleted successfully.";
+                message.style.display = "block";
+            }, 1000);
         }
-    </script>
+  </script>
 </head>
 <body>
 <div class="container">
-<img src="https://raw.githubusercontent.com/KarkuriAnil/notivibe/main/logo.png" alt="App Logo">
+  <img src="https://raw.githubusercontent.com/KarkuriAnil/notivibe/main/logo.png" alt="Notivibe Logo">
 
-  <h2>Notivibe</h2>
+  <h2>Notivibe - Account Deletion</h2>
+  <p>Developed by <strong>Lytortech Private Limited</strong></p>
   <p>Enter your email and password to delete your account.</p>
 
-  <form onsubmit="showMessage(event)">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
+  <form onsubmit="fakeDeleteRequest(event)">
+    <input type="email" id="email" name="email" placeholder="Email" required>
+    <input type="password" id="password" name="password" placeholder="Password" required>
 
     <label for="reason">Why do you want to delete this account? (Optional)</label>
     <textarea id="reason" name="reason" placeholder="Tell us your reason (optional)..." rows="3"></textarea>
@@ -95,7 +103,7 @@
     <button type="submit">Delete My Account</button>
   </form>
 
-  <p id="successMessage" class="message">Your account deletion request has been received.</p>
+  <p id="message" class="message"></p>
 </div>
 </body>
 </html>
